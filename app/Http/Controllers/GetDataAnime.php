@@ -18,7 +18,7 @@ class GetDataAnime extends Controller
         ]);
       }
       else {
-        $fetchingAnime = Http::get("https://api.jikan.moe/v4/anime/");
+        $fetchingAnime = Http::get("https://api.jikan.moe/v4/anime");
         $fetchingSeason = Http::get("https://api.jikan.moe/v4/seasons/now");
         $fetchingTop = Http::get("https://api.jikan.moe/v4/top/anime");
         $resAnime = $fetchingAnime->Json();
@@ -31,10 +31,10 @@ class GetDataAnime extends Controller
           array_push($dataAnime, $resAnime["data"][$i]);
           array_push($dataSeason, $resSeason["data"][$i]);
           array_push($dataTop, $resTop["data"][$i]);
-          Cache::put("dataAnime",$resAnime["data"][$i]);
-          Cache::put("dataSeason",$resSeason["data"][$i]);
-          Cache::put("dataTop",$resTop["data"][$i]);
         }
+        Cache::put("dataAnime",$dataAnime);
+        Cache::put("dataSeason",$dataSeason);
+        Cache::put("dataTop",$dataTop);
       }
       return view("index",[
         "dataAnime" => $dataAnime, 
@@ -130,7 +130,7 @@ class GetDataAnime extends Controller
       $res = $fetching->Json();
       $data = $res["data"];
       return view("animeId",[
-        "data" => $data
+        "data" => $data,
         ]);
     }
     

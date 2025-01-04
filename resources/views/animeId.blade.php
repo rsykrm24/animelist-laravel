@@ -11,6 +11,6 @@
   </div>
   <div class="p-3">
     <h1 class="text-2xl text-blue-800 font-bold">Comments</h1>
-    <x-comment-form></x-comment-form>
+    <x-comment-form id="{{ $data['mal_id'] }}"></x-comment-form>
   </div>
 </x-layout>

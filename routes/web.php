@@ -47,6 +47,15 @@ Route::post("/loginForm",[LoginRegisterForm::class,"LoginForm"]);
 
 Route::post("/registerForm",[LoginRegisterForm::class,"RegisterForm"]);
 
+Route::post("/postComment/{id}",function($id) {
+  $user = Auth::user();
+  return [
+    "email" => $user->email,
+    "comment" => $request->input("comment"),
+    "mal_id" => $id
+  ];
+});
+
 Route::post("/logout",function() {
   Auth::logout();
   return redirect("/login");
