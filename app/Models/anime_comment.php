@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class anime_comment extends Model
 {
-    public $fillable = ["mal_id","email","comment"];
+    public $fillable = ["mal_id","name","comment"];
 }

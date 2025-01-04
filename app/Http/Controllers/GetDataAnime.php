@@ -10,7 +10,6 @@ class GetDataAnime extends Controller
 {
     public function getDataAnimeIndex() {
       if(Cache::get("dataAnime") && Cache::get("dataSeason") && Cache::get("dataTop")) {
-        dd(Cache::get("dataAnime"));
         return view("index",[
         "dataAnime" => Cache::get("dataAnime"), 
         "dataSeason" => Cache::get("dataSeason"), 

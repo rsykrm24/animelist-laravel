@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\GetDataAnime; 
 use App\Http\Controllers\LoginRegisterForm;
+use App\Http\Controllers\CommentPost; 
 
 Route::get('/', [GetDataAnime::class, "getDataAnimeIndex"])->name("index.anime.list");
 
@@ -47,14 +48,7 @@ Route::post("/loginForm",[LoginRegisterForm::class,"LoginForm"]);
 
 Route::post("/registerForm",[LoginRegisterForm::class,"RegisterForm"]);
 
-Route::post("/postComment/{id}",function($id) {
-  $user = Auth::user();
-  return [
-    "email" => $user->email,
-    "comment" => $request->input("comment"),
-    "mal_id" => $id
-  ];
-});
+Route::post("/postComment/{id}",[CommentPost::class,"CommentPost"]);
 
 Route::post("/logout",function() {
   Auth::logout();

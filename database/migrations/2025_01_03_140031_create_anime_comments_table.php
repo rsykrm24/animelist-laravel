@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('anime_comments', function (Blueprint $table) {
             $table->id();
             $table->string("mal_id");
-            $table->string("email");
+            $table->string("name");
             $table->string("comment");
             $table->timestamps();
         });
