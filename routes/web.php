@@ -24,9 +24,7 @@ Route::get('/search/{id}', [GetDataAnime::class, "getDataAnimeSearch"])->name("t
 
 Route::get('/anime/{id}', [GetDataAnime::class, "getDataAnimeById"])->name("id.anime.list");
 
-Route::get('/dashboard', function() {
-  return view("dashboard");
-})->name("dashboard")->middleware("auth");
+Route::get('/dashboard', fn() => view("dashboard"))->name("dashboard")->middleware("auth");
 
 Route::get('/login', function() {
   if(Auth::user()) {
